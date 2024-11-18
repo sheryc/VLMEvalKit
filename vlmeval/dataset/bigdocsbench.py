@@ -163,7 +163,7 @@ class BigDocsBenchDataset(ImageBaseDataset):
         )
         dump(results, score_pth_json)
         logger.info(
-            f'VCR successfully finished evaluating {eval_file}, results saved in {score_pth_json}'
+            f'BigDocsBench successfully finished evaluating {eval_file}, results saved in {score_pth_json}'
         )
         logger.info('Score: ')
         for key, value in results.items():
