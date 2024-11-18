@@ -27,6 +27,7 @@ from .mlvu import MLVU, MLVU_MCQ, MLVU_OpenEnded
 from .tempcompass import TempCompass, TempCompass_Captioning, TempCompass_MCQ, TempCompass_YorN
 from .longvideobench import LongVideoBench
 from .video_concat_dataset import ConcatVideoDataset
+from .bigdocsbench import BigDocsBenchDataset
 
 from .miabench import MIABench
 from .wildvision import WildVision
@@ -125,7 +126,7 @@ IMAGE_DATASET = [
     MMMUDataset, OCRBench, MathVista, LLaVABench, MMVet, MTVQADataset, TableVQABench,
     MMLongBench, VCRDataset, MMDUDataset, DUDE, SlideVQA, MUIRDataset,
     GMAIMMBenchDataset, MMERealWorld, HRBenchDataset, CRPE, MathVerse, NaturalBenchDataset,
-    MIABench, OlympiadBench, WildVision
+    MIABench, OlympiadBench, WildVision, BigDocsBenchDataset
 ]
 
 VIDEO_DATASET = [
@@ -221,5 +222,6 @@ def build_dataset(dataset_name, **kwargs):
 
 
 __all__ = [
-    'build_dataset', 'img_root_map', 'build_judge', 'extract_answer_from_item', 'prefetch_answer', 'DEBUG_MESSAGE'
-] + [cls.__name__ for cls in DATASET_CLASSES]
+              'build_dataset', 'img_root_map', 'build_judge', 'extract_answer_from_item', 'prefetch_answer',
+              'DEBUG_MESSAGE'
+          ] + [cls.__name__ for cls in DATASET_CLASSES]
