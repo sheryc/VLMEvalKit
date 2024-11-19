@@ -117,10 +117,12 @@ class BigDocsBenchDataset(ImageBaseDataset):
 
     DATASET_URL = {
         'BigDocsBench': f'https://litter.catbox.moe/a64k6e.tsv',
+        'BigDocsBench_Flow': f'https://litter.catbox.moe/7z7k6e.tsv',
     }
 
     DATASET_MD5 = {
         'BigDocsBench': 'ff53e6e8913e71a9f5f79c4e55d260f8',
+        'BigDocsBench_Flow': '9a1b1b0b6e2d1d2f2c2d2d2f'
     }
 
     def evaluate(self, eval_file, **judge_kwargs):
@@ -149,6 +151,12 @@ class BigDocsBenchDataset(ImageBaseDataset):
 
         lt = len(data)
         lines = [data.iloc[i] for i in range(lt)]
+
+        # get the set of 'category' in the dataset
+        existing_categories = set([line['category'] for line in lines])
+        assert all([category in ALL_TASKS for category in existing_categories])
+        metrics_dict = {category: metrics_dict[category] for category in metrics_dict.keys() if
+                        category in existing_categories}
 
         for instance_id, instance in tqdm(enumerate(lines)):
             if instance['category'] in ALL_TASKS:
