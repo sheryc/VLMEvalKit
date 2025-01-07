@@ -21,6 +21,7 @@ from .mmlongbench import MMLongBench
 from .dude import DUDE
 from .slidevqa import SlideVQA
 from .vl_rewardbench import VLRewardBench
+from .bigdocsbench import BigDocsBench
 
 from .mmbench_video import MMBenchVideo
 from .videomme import VideoMME
@@ -133,7 +134,7 @@ IMAGE_DATASET = [
     MMLongBench, VCRDataset, MMDUDataset, DUDE, SlideVQA, MUIRDataset, CCOCRDataset,
     GMAIMMBenchDataset, MMERealWorld, HRBenchDataset, CRPE, MathVerse, NaturalBenchDataset,
     MIABench, OlympiadBench, WildVision, MMMath, QSpatial, Dynamath, MMGenBench, VizWiz, MMNIAH,
-    CMMMU, VLRewardBench
+    CMMMU, VLRewardBench, BigDocsBench
 ]
 
 VIDEO_DATASET = [

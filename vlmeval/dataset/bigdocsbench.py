@@ -1,5 +1,6 @@
 from functools import partial
 
+import pandas as pd
 import torch
 from tqdm import tqdm
 
@@ -112,7 +113,7 @@ def evaluate_per_task(result, metrics_dict):
         metrics_dict[task_name]['bbox_iou'].update(reference=ref, prediction=pred)
 
 
-class BigDocsBenchDataset(ImageBaseDataset):
+class BigDocsBench(ImageBaseDataset):
     TYPE = 'VQA'
 
     DATASET_URL = {
@@ -125,6 +126,7 @@ class BigDocsBenchDataset(ImageBaseDataset):
         'BigDocsBench_Flow': '9a1b1b0b6e2d1d2f2c2d2d2f'
     }
 
+    @classmethod
     def evaluate(self, eval_file, **judge_kwargs):
         logger = get_logger('Evaluation')
         data = load(eval_file)
@@ -176,3 +178,7 @@ class BigDocsBenchDataset(ImageBaseDataset):
         logger.info('Score: ')
         for key, value in results.items():
             logger.info('{}:{}'.format(key, value))
+
+        results_pd_dict = {task: list(results[task].values())[0] for task in results.keys()}
+        results_pd = pd.DataFrame(results_pd_dict)
+        return results_pd

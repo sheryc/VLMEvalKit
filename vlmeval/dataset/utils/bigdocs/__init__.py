@@ -1,6 +1,4 @@
-from .bertscore_metric import BERTScoreMetric
 from .dino2score_metric import DINO2ScoreMetric
-from .gpt4_metric import GPT4SimilarityMetric
 from .html_metric import HTMLSimilarityMetric
 from .rms_metric import RMSF1Metric
 from .rouge_metric import RougeMetric
